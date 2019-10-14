@@ -1,14 +1,31 @@
-import React from "react"
+import React from "react";
 
-const Pizza = () => {
-  return(
+const Pizza = ({ pizza, getEditPizza }) => {
+  // console.log(props.pizza.vegetarian)
+  const handleClick = () => {
+    getEditPizza(pizza.id);
+  };
+
+  return (
     <tr>
-      <td>{"Replace Me With Pizza Topping"}</td>
-      <td>{"Replace Me With Pizza Size"}</td>
-      <td>{"Replace Me With Vegatarian"}</td>
-      <td><button type="button" className="btn btn-primary">Edit Pizza</button></td>
+      <td>{pizza.topping}</td>
+      <td>{pizza.size}</td>
+      <td>
+        {typeof pizza.vegetarian !== "undefined"
+          ? pizza.vegetarian.toString()
+          : ""}
+      </td>
+      <td>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={handleClick}
+        >
+          Edit Pizza
+        </button>
+      </td>
     </tr>
-  )
-}
+  );
+};
 
-export default Pizza
+export default Pizza;
